@@ -771,7 +771,8 @@ def app():
     def Available_Channels():
 
         df = pd.read_csv('4hometv_channels.csv')
-        xRows = df.shape[0] * 3
+        xAllRows = df.shape[0]
+        xRows = 0
 
         st.write ('\n')
         st.write ('\n')
@@ -779,32 +780,93 @@ def app():
         with col2:
             st.image('images/channels.png',width=500)
 
-        col1, col2, col3 = st.columns([1,2,1])
-        with col2:
-            st.write ('\n')
-            st.write ('\n')
-            row = f'<p style="text-align: center;font-family:sans-serif; color:black; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 20px;">Total Channels Available: <b>{xRows}</b></p>'
+
+        st.write ('\n')
+        col1, col2, col3, col4 = st.columns([1,.2,1.2,.8])
+        with col1:
+            xSelection = st.radio("Display Groups:", ('All Groups','Select Groups')) 
+        with col3:
+            if xSelection == 'Select Groups':
+                xGroup = df['Group'].unique().tolist()
+                # xGroup.insert(0,'All')
+                xGroupChoice = st.selectbox('Select Group:', xGroup)
+                # st.title('Channel Group: ' + xGroupChoice)
+                st.write ('\n')
+
+                # if xGroupChoice != 'All':
+                df = df.loc[(df['Group'] == xGroupChoice)]
+                xRows = df.shape[0]
+
+
+        st.write ('\n')
+        st.write ('\n')
+        col1, col2, col3 = st.columns([2,1,2])
+        with col1:
+            row = f'<p style="text-align: left;font-family:sans-serif; color:black; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 16px;">Total Channels Available: <b>{xAllRows}</b></p>'
             st.markdown(row, unsafe_allow_html=True)
+        with col3:
+            if xRows > 0:
+                row = f'<p style="text-align: right;font-family:sans-serif; color:black; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 16px;">Group: {xGroupChoice} Available Channels: <b>{xRows}</b></p>'
+                st.markdown(row, unsafe_allow_html=True)
 
 
-        font_color = [['black'],['blue'],['black'],['blue'],['black'],['blue']]
-        fig = go.Figure(data=[go.Table(
-            columnwidth=[1.2,.8,1.2,.8,1.2,.8],
-            header=dict(values=list(['Channel', 'Group', 'Channel', 'Group', 'Channel', 'Group']),
-                        fill_color='paleturquoise',
-                        font=dict(color='black', family='Arial, sans-serif', size=9),
-                        align='center'),
-            cells=dict(values=[df.Channel1, df.Group1, df.Channel2, df.Group1, df.Channel3, df.Group3],
-                    fill_color='lavender',
-                    font_color=font_color,
-                    height=25,
-                    font=dict(size=11),
-                    align = ['left', 'center', 'left', 'center', 'left', 'center']
-                )
-            )
-        ])
-        fig.update_layout(margin=dict(l=0,r=0,b=5,t=5), width=1000,height=2000)
-        st.write(fig)
+        xList1 = []
+        xList2 = []
+        xItem = 0
+
+        for index, row in df.iterrows():
+            xItem += 1
+            xList1.append (row["Group"])
+            xList1.append (row["Channel"])
+            if xItem > 2:
+                xList2.append (xList1)
+                xList1 = []
+                xItem = 0
+        xList2.append (xList1)
+
+        df2 = pd.DataFrame(xList2)
+        df2.rename(columns = 
+            {0: 'Group1',
+             1: 'Channel1',
+             2: 'Group2',
+             3: 'Channel2',
+             4: 'Group3',
+             5: 'Channel3'},
+             inplace=True)
+
+        # AgGrid(df2)
+
+        style_group = JsCode(
+            """
+            function(params) {return {'color': 'blue'}};
+            """
+        )
+        gb = GridOptionsBuilder.from_dataframe(df2)
+        gb.configure_default_column(groupable=True, 
+                                        value=True, 
+                                        enableRowGroup=True, 
+                                        editable=True,
+                                        enableRangeSelection=True,
+                                    )
+        gb.configure_column("Group1", cellStyle=style_group, maxWidth=130)
+        gb.configure_column("Group2", cellStyle=style_group, maxWidth=130)
+        gb.configure_column("Group3", cellStyle=style_group, maxWidth=130)
+        gridOptions = gb.build()
+        data = AgGrid(
+            df2,
+            gridOptions=gridOptions,
+            height=850,
+            width='100%',
+            theme='light',     # valid themes: 'streamlit', 'light', 'dark', 'blue', 'fresh', 'material'
+            defaultWidth=25,
+            fit_columns_on_grid_load=True, 
+            enable_enterprise_modules=True,
+            allow_unsafe_jscode=True
+        )
+
+
+
+
 
 
 
