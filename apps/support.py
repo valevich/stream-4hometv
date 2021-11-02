@@ -784,9 +784,9 @@ def app():
         st.write ('\n')
         col1, col2, col3, col4 = st.columns([1,.2,1.2,.8])
         with col1:
-            xSelection = st.radio("Display Groups:", ('All Groups','Select Groups')) 
+            xSelection = st.radio("Select Channel Groups to Display:", ('All Groups','Select a Group')) 
         with col3:
-            if xSelection == 'Select Groups':
+            if xSelection == 'Select a Group':
                 xGroup = df['Group'].unique().tolist()
                 # xGroup.insert(0,'All')
                 xGroupChoice = st.selectbox('Select Group:', xGroup)
@@ -863,9 +863,6 @@ def app():
             enable_enterprise_modules=True,
             allow_unsafe_jscode=True
         )
-
-
-
 
 
 
@@ -954,6 +951,166 @@ def app():
 
 
 
+    #----------------------------------------------------------------------------------#
+    #                               Add_Storage_FireTV                                 #
+    #----------------------------------------------------------------------------------#
+    def Add_Storage_FireTV ():
+        #---------------  ROW 1  -------------------
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand1.png")
+            st.image(img,width=470)
+        st.write ('\n')
+
+        #---------------  ROW 2  -------------------
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+            How to Add USB Flash Storage to Your Amazon Fire TV</p>'
+        st.markdown(row, unsafe_allow_html=True)
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 3  -------------------
+        st.write('In Amazon’s current lineup of Fire TV models, the Fire TV Stick Lite, Fire TV Stick, and the Fire TV Cube support expanding their internal storage through the use of an external USB drive. Doing so allows you to move supported apps onto the external storage device to free up space on the Fire TV Stick and Fire TV Cube’s internal storage space. The Fire TV Stick 4K, while it does support external USB devices to some extent, does not currently support moving apps to external storage. Here are what accessories you need for external storage, instucritions for how to configure your Fire TV device correctly, and how to move apps off of the internal storage.')
+        st.write ('\n')
+        st.write ('\n')
+
+        st.header('Requirments:')
+        st.write ('\n')
+
+        #---------------  ROW 4  -------------------
+        st.subheader('USB Drive:')
+        link = f'[Link](https://www.amazon.com/Samsung-BAR-Plus-128GB-MUF-128BE4/dp/B07BPG9YX9/ref=sr_1_5?dchild=1&keywords=flash+drive+128gb&qid=1635882803&qsid=139-6605085-6797824&s=electronics&sprefix=flash+drive+1%2Celectronics%2C78&sr=1-5&sres=B00TKFCYP0%2CB097MJK1XZ%2CB07BPG9YX9%2CB07Q5HMXTN%2CB00P8XQPY4%2CB015CH1PJU%2CB07D7PDLXC%2CB08CGXYNKV%2CB07T5XGWZY%2CB07855LJ99%2CB08XQGX99K%2CB007YX9OGW%2CB07TFCQ945%2CB082FGS7Q7%2CB01EZ0X55C%2CB07YYJRXQR%2CB07VQR5MPN%2CB077BGMX8C%2CB075X12NKG%2CB08GYM5F8G&srpt=FLASH_DRIVE)'
+        st.markdown(link, unsafe_allow_html=True)
+        st.write('Even though the Fire TV Stick and Fire TV Cube’s USB ports are only USB 2.0 ports, it is recommended that you use a USB drive capable of USB 3.0/3.1 speeds. This is because USB 3.0/3.1 drives tend to perform better than USB 2.0 drives, even when connected to USB 2.0 ports. Connecting a poorly performing USB drive to your Fire TV will result in very slow load times for apps that are stored on the drive. It’s best to use a USB 3.0/3.1 Flash Drive from a reputable brand, such as this compact Samsung drive or compact SanDisk drive. The storage capacity of the drive is up to you.')
+        st.write ('\n')
+
+        #---------------  ROW 5  -------------------
+        st.subheader('OTG Cable:')
+        link = f'[Link](https://www.amazon.com/ANDTOBO-Micro-Adapter-Power-Devices/dp/B083M1S6QT/ref=asc_df_B083M1S6QT/?tag=hyprod-20&linkCode=df0&hvadid=459410835726&hvpos=&hvnetw=g&hvrand=12648465173518764459&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9003687&hvtargid=pla-944808289663&th=1)'
+        st.markdown(link, unsafe_allow_html=True)
+        st.write('To connect the USB drive to the Fire TV, you will need a micro USB OTG cable. For use with a Fire TV Stick, you will need a “Y” cable that includes a power cable, such as this DSYJ OTG Cable or this 2-Pack of AuviPal OTG Cables. For the Fire TV Cube, you can use either a “Y” cable and ignore the extra power cable portion or you can use a straight micro USB OTG cable, like this Monoprice Straight OTG Cable or this 2-Pack of UGREEN Straight OTG Cables.')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand2.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 6  -------------------
+        st.subheader('Prepare USB Drive:')
+        st.write('1. First, connect your OTG cable to your Fire TV Stick or Fire TV Cube and power on the device WITHOUT the USB drive connected.')
+        st.write ('\n')
+        st.write('2. Once the Fire TV is powered on and at the Home screen, plug the USB drive into the USB OTG cable. You do not need to format the USB drive to a specific file system format ahead of time. The Fire TV will be formatting the drive for you.')
+        st.write ('\n')
+        st.write('3. If your USB drive was not formatted with the FAT32 file system, you will be asked what you would like to do with the drive. If you want to use the drive for storing apps, you need to select the “Device Storage” option. Your drive will then be erased and formatted to store apps. Note that this means you will not be able to use the drive for anything else unless you later erase/format the drive.')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand3.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 7  -------------------
+        st.write('If your USB drive was formatted with the FAT32 file system, you will not see the above prompt. Instead, you need to navigate to Settings > My Fire TV > USB Drive and then select the “Format to Internal Storage” option.')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand4.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 8  -------------------
+        st.write('4. Confirm that you want to format the dirve by selecting “Yes” on the prompt. Once formatted, all files on the drive will be erased. This also means the drive cannot be used to store anything else while it is formatted for Fire TV app storage.')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand5.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 9  -------------------
+        st.write('5. Depending on the size and speed of the drive, formatting it can take several minutes. Just be patient.')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand6.jpeg")
+            st.image(img,width=470)
+        with col2:
+            img = Image.open("images/expand7.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 10  -------------------
+        st.header('You can also move Apps to USB:')
+        st.write ('\n')
+        st.write('1. If you’d like, you can verify that your USB drive is prepared to accept apps by navigating to Settings > My Fire TV > USB Drive. If the option to “Format to External Storage” is present, then the drive is prepared correctly. If not, repeat the prepare steps above.')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand8.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 11  -------------------
+        st.write('2. To move apps to USB storage, navigate to Settings > Applications > Manage Installed Applications and be sure that the option at the top is set to “Show All Applications.”')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand9.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 12  -------------------
+        st.write('3. Scroll down and select the app that you want to move to external storage. To free up the most internal storage space, select an app that has a large “Application:” value. The portion of the app listed under “Data:” or “Cache:” will not be moved to external storage.')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand10.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 13  -------------------
+        st.write('4. If the app can be moved, the option “Move to USB Storage” will be present. If the option is not there, then the app cannot be moved and must remain on the device’s internal storage. Not all apps can be moved. Select “Move to USB Storage” to begin moving the app.')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand11.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 14  -------------------
+        st.write('5. The app may take several minutes to move depending on the size of the app and the speed of your USB drive. Just be patient.')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand12.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  ROW 15  -------------------
+        st.write('6. Once moved to USB Storage, pressing back to return to the app list will show a USB icon next to the app name, indicating that it is now on external storage. If you install a new app that can be moved to external storage while you have your USB drive connected, the new app will automatically be installed to your external USB drive. Ejecting or removing the USB drive while apps are installed on it will cause those apps to disappear from your Fire TV. When you reconnect the drive, those apps will automatically return. If you need to move the app back to internal storage, repeat this guide but select “Move to internal Storage” during step 4.')
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            img = Image.open("images/expand13.jpeg")
+            st.image(img,width=470)
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
+
+
+
+
+    #----------------------------------------------------------------------------------#
+    #                                                                                  #
+    #----------------------------------------------------------------------------------#
     def load_lottieurl(url: str):
         r = requests.get(url)
         if r.status_code != 200:
@@ -966,8 +1123,7 @@ def app():
     #----------------------------------------------------------------------------------#
     display_header()
 
-    xSelection = st.sidebar.radio("Select Below:", ('How to Sign-up or Renew','Install SmartIPTV App', 'Remote Control', 'Available Channels', 'Frequently Asked Questions')) 
-    # xSelection = st.sidebar.radio("Select Below:", ('Install IPTV App', 'Activate Device', 'Remote Control', 'Available Channels', 'Frequently Asked Questions')) 
+    xSelection = st.sidebar.radio("Select Below:", ('How to Sign-up or Renew','Install SmartIPTV App', 'Remote Control', 'Available Channels', 'Frequently Asked Questions', 'Add Storage to Fire TV')) 
 
     if xSelection == 'How to Sign-up or Renew':
         Signup ()
@@ -979,5 +1135,7 @@ def app():
         Available_Channels ()
     elif xSelection == 'Frequently Asked Questions': 
         Frequently_Asked_Questions ()
+    elif xSelection == 'Add Storage to Fire TV': 
+        Add_Storage_FireTV ()
 
 
