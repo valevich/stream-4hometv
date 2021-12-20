@@ -10,7 +10,7 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 from st_aggrid.shared import JsCode
 from PIL import Image
 
-is_prod = os.environ.get('IS_HEROKU', None)
+# is_prod = os.environ.get('IS_HEROKU', None)
 
 def app():
 
@@ -45,6 +45,7 @@ def app():
     # @st.cache
     def load_gsheet(gsheet):
 
+            is_prod = os.environ.get('IS_HEROKU', None)
             if is_prod:
                 gc = pygsheets.authorize(service_account_env_var = 'GDRIVE_API_CREDENTIALS') # use Heroku env
             else:    
