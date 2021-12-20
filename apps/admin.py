@@ -10,11 +10,9 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 from st_aggrid.shared import JsCode
 from PIL import Image
 
+is_prod = os.environ.get('IS_HEROKU', None)
 
 def app():
-
-    is_prod = os.environ.get('IS_HEROKU', None)
-
 
     def display_header():
 
@@ -114,7 +112,7 @@ def app():
 
             st.title('Devices')    
             df1 = load_gsheet('Users')           # LOAD GOOGLE SHEET
-            df1.drop(df1.columns[[1,2,3,5,6,8,9,10,19]], axis = 1, inplace = True)
+            df1.drop(df1.columns[[1,2,3,5,6,9,10,19]], axis = 1, inplace = True)
             df1 = df1.sort_values(by=['Status'], ascending=True)
             df1 = df1.reindex(columns=(['Status'] + list([a for a in df1.columns if a != 'Status']) ))
 
