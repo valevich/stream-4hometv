@@ -27,8 +27,10 @@ app.add_app("Register", register.app)
 app.add_app("Account", account.app)
 app.add_app("Admin", admin.app)
 
-img = Image.open("images/4hometv_logo2wide.png")
-st.sidebar.image(img,width=200)
+# img = Image.open("images/4hometv_logo2wide.png")
+# st.sidebar.image(img,width=200)
+img = Image.open("images/4HomeTV Logo.png")
+st.sidebar.image(img,width=100)
 
 # The main app
 app.run()

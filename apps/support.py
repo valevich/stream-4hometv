@@ -51,9 +51,26 @@ def app():
 
 
     #----------------------------------------------------------------------------------#
+    #                                  DISPLAY HEADER                                  #
+    #----------------------------------------------------------------------------------#
+    def display_header2():
+
+        #---------------  HEADER ROW 1  -------------------
+        col1, col2, col3 = st.columns([.1,5,0.1])
+        with col2:
+            img = Image.open("images/premier-league-0.png")
+            st.image(img,width=900)
+
+        st.write ('\n')
+
+
+
+    #----------------------------------------------------------------------------------#
     #                                     Signup                                       #
     #----------------------------------------------------------------------------------#
     def Signup ():
+
+        display_header()
 
         st.title ('Get Started with IPTV in 4 Simple Steps')
         st.write ('You’ve probably heard a lot about IPTV streaming lately, but you may not know where to start. IPTVs are getting popular day by day. You can get thousands of live TV channels. Whereas, live TV platforms like Sling TV and fuboTV costs more than $30 per month for around 100+ channels. If you want a reliable IPTV service for your Firestick, read on...')
@@ -143,6 +160,8 @@ def app():
     #                                 Install_IPTV_App                                 #
     #----------------------------------------------------------------------------------#
     def Install_IPTV_App():
+
+        display_header()
 
         #---------------  Install_IPTV ROW 1  -------------------
         col1, col2, col3 = st.columns([1,2,1])
@@ -548,6 +567,8 @@ def app():
     #----------------------------------------------------------------------------------#
     def Remote_Control():
 
+        display_header()
+
         #---------------  Remote_Control Image  -------------------
         st.write ('\n')
         st.write ('\n')
@@ -770,6 +791,8 @@ def app():
     #----------------------------------------------------------------------------------#
     def Available_Channels():
 
+        display_header()
+
         df = pd.read_csv('4hometv_channels.csv')
         xAllRows = df.shape[0]
         xRows = 0
@@ -873,6 +896,8 @@ def app():
     #----------------------------------------------------------------------------------#
     def Frequently_Asked_Questions():
 
+        display_header()
+
         #---------------  ROW 1  -------------------
         row = '<p style="text-align: center;font-family:sans-serif; color:Red; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 28px;"><b>Frequently Asked Questions</b></p>'
         st.markdown(row, unsafe_allow_html=True)
@@ -955,6 +980,9 @@ def app():
     #                               Add_Storage_FireTV                                 #
     #----------------------------------------------------------------------------------#
     def Add_Storage_FireTV ():
+
+        display_header()
+
         #---------------  ROW 1  -------------------
         col1, col2, col3 = st.columns([1,2,1])
         with col2:
@@ -1107,6 +1135,72 @@ def app():
 
 
 
+    #----------------------------------------------------------------------------------#
+    #                            Premier_League_Channels                               #
+    #----------------------------------------------------------------------------------#
+    def Premier_League_Channels ():
+
+        display_header2()
+
+        #---------------  ROW 1  -------------------
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        row = '<p style="text-align: center;font-family:sans-serif; color:Red; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 28px;"><b>Channels that carry Premier League games</b></p>'
+        st.markdown(row, unsafe_allow_html=True)
+
+        #---------------  ROW 2  -------------------
+        row = '<p style="text-align: center;font-family:sans-serif; color:Grey; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 16px;"><b>Check all channels as some games may be on different channels</b></p>'
+        st.markdown(row, unsafe_allow_html=True)
+        st.write ('\n')
+        st.write ('\n')
+
+
+        with st.spinner('Loading Data...Please Wait...'):
+
+            is_prod = os.environ.get('IS_HEROKU', None)
+            if is_prod:
+                gc = pygsheets.authorize(service_account_env_var = 'GDRIVE_API_CREDENTIALS') # use Heroku env
+            else:    
+                gc = pygsheets.authorize(service_file='client_secret_4hometv.json') # using local account credentials
+
+            sheet = gc.open('4HomeTV')
+            wks = sheet.worksheet_by_title('EPL')
+            df1 = wks.get_as_df()
+
+            gb = GridOptionsBuilder.from_dataframe(df1)
+            gb.configure_default_column(groupable=True, 
+                                            value=True, 
+                                            enableRowGroup=True, 
+                                            editable=True,
+                                            enableRangeSelection=True,
+                                        )
+            gb.configure_column("ChannelNo", maxWidth=120)
+            gb.configure_column("Channel", maxWidth=320)
+            gb.configure_column("Group", maxWidth=500)
+            gridOptions = gb.build()
+            data = AgGrid(
+                df1,
+                gridOptions=gridOptions,
+                # columnSize="sizeToFit",
+                height=800,
+                # width=720,
+                theme='fresh',     # valid themes: 'streamlit', 'light', 'dark', 'blue', 'fresh', 'material'
+                # defaultWidth=25,
+                fit_columns_on_grid_load=True, 
+                enable_enterprise_modules=True,
+                allow_unsafe_jscode=True
+            )
+
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
+
+
+
+
 
     #----------------------------------------------------------------------------------#
     #                                                                                  #
@@ -1121,9 +1215,16 @@ def app():
     #----------------------------------------------------------------------------------#
     #                              MAIN - BEGIN SCRIPT                                 #
     #----------------------------------------------------------------------------------#
-    display_header()
+    # if "first" not in st.session_state:
+    #     st.session_state.first = 'Y'
+    
+    # if st.session_state.first == 'Y':
+    #     st.session_state.first = 'N'
+    #     display_header()
 
-    xSelection = st.sidebar.radio("Select Below:", ('How to Sign-up or Renew','Install SmartIPTV App', 'Remote Control', 'Available Channels', 'Frequently Asked Questions', 'Add Storage to Fire TV')) 
+    xSelection = st.sidebar.radio("Select Below:", ('How to Sign-up or Renew','Install SmartIPTV App', 
+            'Remote Control', 'Available Channels', 'Premier League Channels', 'Frequently Asked Questions', 
+            'Add Storage to Fire TV')) 
 
     if xSelection == 'How to Sign-up or Renew':
         Signup ()
@@ -1137,5 +1238,7 @@ def app():
         Frequently_Asked_Questions ()
     elif xSelection == 'Add Storage to Fire TV': 
         Add_Storage_FireTV ()
+    elif xSelection == 'Premier League Channels': 
+        Premier_League_Channels ()
 
 
