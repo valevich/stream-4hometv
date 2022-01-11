@@ -66,7 +66,7 @@ def app():
 
             st.title('Users')
             df1 = load_gsheet('Users')           # LOAD GOOGLE SHEET
-            df1.drop(df1.columns[[11,12,13,14,15,16,17,18]], axis = 1, inplace = True)
+            df1.drop(df1.columns[[7,10,12,13,14,15,16,17,18,19,20,21]], axis = 1, inplace = True)
             df1 = df1.sort_values(by=['Status'], ascending=True)
             df1 = df1.reindex(columns=(['Status'] + list([a for a in df1.columns if a != 'Status']) ))
 
@@ -86,9 +86,7 @@ def app():
                                             enableRangeSelection=True,
                                         )
             gb.configure_column("Status", cellStyle=style_negative, maxWidth=85)
-            gb.configure_column("ActivationDate", maxWidth=100)
             gb.configure_column("ExpirationDate", maxWidth=100)
-            gb.configure_column("Referral", maxWidth=100)
             gridOptions = gb.build()
             data = AgGrid(
                 df1,
@@ -113,7 +111,7 @@ def app():
 
             st.title('Devices')    
             df1 = load_gsheet('Users')           # LOAD GOOGLE SHEET
-            df1.drop(df1.columns[[1,2,3,5,6,9,10,19]], axis = 1, inplace = True)
+            df1.drop(df1.columns[[0,1,3,4,5,6,7,8,10,11,12,19]], axis = 1, inplace = True)
             df1 = df1.sort_values(by=['Status'], ascending=True)
             df1 = df1.reindex(columns=(['Status'] + list([a for a in df1.columns if a != 'Status']) ))
 

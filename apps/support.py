@@ -839,8 +839,8 @@ def app():
 
         for index, row in df.iterrows():
             xItem += 1
+            xList1.append (str(row["ChannelNo"]) + '. ' + row["Channel"])
             xList1.append (row["Group"])
-            xList1.append (row["Channel"])
             if xItem > 2:
                 xList2.append (xList1)
                 xList1 = []
@@ -849,12 +849,12 @@ def app():
 
         df2 = pd.DataFrame(xList2)
         df2.rename(columns = 
-            {0: 'Group1',
-             1: 'Channel1',
-             2: 'Group2',
-             3: 'Channel2',
-             4: 'Group3',
-             5: 'Channel3'},
+            {0: 'Channel1',
+             1: 'Group1',
+             2: 'Channel2',
+             3: 'Group2',
+             4: 'Channel3',
+             5: 'Group3'},
              inplace=True)
 
         # AgGrid(df2)
@@ -886,6 +886,130 @@ def app():
             enable_enterprise_modules=True,
             allow_unsafe_jscode=True
         )
+
+
+
+
+
+    #----------------------------------------------------------------------------------#
+    #                            Premier_League_Channels                               #
+    #----------------------------------------------------------------------------------#
+    def Premier_League_Channels():
+
+        display_header2()
+
+        #---------------  ROW 1  -------------------
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        row = '<p style="text-align: center;font-family:sans-serif; color:Red; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 28px;"><b>Channels that carry Premier League games</b></p>'
+        st.markdown(row, unsafe_allow_html=True)
+
+        #---------------  ROW 2  -------------------
+        row = '<p style="text-align: center;font-family:sans-serif; color:Grey; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 16px;"><b>Check all channels as some games may be on different channels</b></p>'
+        st.markdown(row, unsafe_allow_html=True)
+        st.write ('\n')
+        st.write ('\n')
+
+
+        with st.spinner('Loading Data...Please Wait...'):
+
+            df1 = pd.read_csv('4hometv_EPL.csv')
+
+            gb = GridOptionsBuilder.from_dataframe(df1)
+            gb.configure_default_column(groupable=True, 
+                                            value=True, 
+                                            enableRowGroup=True, 
+                                            editable=True,
+                                            enableRangeSelection=True,
+                                        )
+            gb.configure_column("ChannelNo", maxWidth=120)
+            gb.configure_column("Channel", maxWidth=320)
+            gb.configure_column("Group", maxWidth=500)
+            gridOptions = gb.build()
+            data = AgGrid(
+                df1,
+                gridOptions=gridOptions,
+                # columnSize="sizeToFit",
+                height=1000,
+                # width=720,
+                theme='fresh',     # valid themes: 'streamlit', 'light', 'dark', 'blue', 'fresh', 'material'
+                # defaultWidth=25,
+                fit_columns_on_grid_load=True, 
+                enable_enterprise_modules=True,
+                allow_unsafe_jscode=True
+            )
+
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
+
+
+
+    #----------------------------------------------------------------------------------#
+    #                            Premier_League_Channels 0                              #
+    #----------------------------------------------------------------------------------#
+    def Premier_League_Channels0():
+
+        display_header2()
+
+        #---------------  ROW 1  -------------------
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        row = '<p style="text-align: center;font-family:sans-serif; color:Red; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 28px;"><b>Channels that carry Premier League games</b></p>'
+        st.markdown(row, unsafe_allow_html=True)
+
+        #---------------  ROW 2  -------------------
+        row = '<p style="text-align: center;font-family:sans-serif; color:Grey; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 16px;"><b>Check all channels as some games may be on different channels</b></p>'
+        st.markdown(row, unsafe_allow_html=True)
+        st.write ('\n')
+        st.write ('\n')
+
+
+        with st.spinner('Loading Data...Please Wait...'):
+
+            is_prod = os.environ.get('IS_HEROKU', None)
+            if is_prod:
+                gc = pygsheets.authorize(service_account_env_var = 'GDRIVE_API_CREDENTIALS') # use Heroku env
+            else:    
+                gc = pygsheets.authorize(service_file='client_secret_4hometv.json') # using local account credentials
+
+            sheet = gc.open('4HomeTV')
+            wks = sheet.worksheet_by_title('EPL')
+            df1 = wks.get_as_df()
+
+            gb = GridOptionsBuilder.from_dataframe(df1)
+            gb.configure_default_column(groupable=True, 
+                                            value=True, 
+                                            enableRowGroup=True, 
+                                            editable=True,
+                                            enableRangeSelection=True,
+                                        )
+            gb.configure_column("ChannelNo", maxWidth=120)
+            gb.configure_column("Channel", maxWidth=320)
+            gb.configure_column("Group", maxWidth=500)
+            gridOptions = gb.build()
+            data = AgGrid(
+                df1,
+                gridOptions=gridOptions,
+                # columnSize="sizeToFit",
+                height=800,
+                # width=720,
+                theme='fresh',     # valid themes: 'streamlit', 'light', 'dark', 'blue', 'fresh', 'material'
+                # defaultWidth=25,
+                fit_columns_on_grid_load=True, 
+                enable_enterprise_modules=True,
+                allow_unsafe_jscode=True
+            )
+
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
 
 
 
@@ -1130,73 +1254,6 @@ def app():
         st.write ('\n')
         st.write ('\n')
         st.write ('\n')
-
-
-
-
-
-    #----------------------------------------------------------------------------------#
-    #                            Premier_League_Channels                               #
-    #----------------------------------------------------------------------------------#
-    def Premier_League_Channels ():
-
-        display_header2()
-
-        #---------------  ROW 1  -------------------
-        st.write ('\n')
-        st.write ('\n')
-        st.write ('\n')
-        row = '<p style="text-align: center;font-family:sans-serif; color:Red; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 28px;"><b>Channels that carry Premier League games</b></p>'
-        st.markdown(row, unsafe_allow_html=True)
-
-        #---------------  ROW 2  -------------------
-        row = '<p style="text-align: center;font-family:sans-serif; color:Grey; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 16px;"><b>Check all channels as some games may be on different channels</b></p>'
-        st.markdown(row, unsafe_allow_html=True)
-        st.write ('\n')
-        st.write ('\n')
-
-
-        with st.spinner('Loading Data...Please Wait...'):
-
-            is_prod = os.environ.get('IS_HEROKU', None)
-            if is_prod:
-                gc = pygsheets.authorize(service_account_env_var = 'GDRIVE_API_CREDENTIALS') # use Heroku env
-            else:    
-                gc = pygsheets.authorize(service_file='client_secret_4hometv.json') # using local account credentials
-
-            sheet = gc.open('4HomeTV')
-            wks = sheet.worksheet_by_title('EPL')
-            df1 = wks.get_as_df()
-
-            gb = GridOptionsBuilder.from_dataframe(df1)
-            gb.configure_default_column(groupable=True, 
-                                            value=True, 
-                                            enableRowGroup=True, 
-                                            editable=True,
-                                            enableRangeSelection=True,
-                                        )
-            gb.configure_column("ChannelNo", maxWidth=120)
-            gb.configure_column("Channel", maxWidth=320)
-            gb.configure_column("Group", maxWidth=500)
-            gridOptions = gb.build()
-            data = AgGrid(
-                df1,
-                gridOptions=gridOptions,
-                # columnSize="sizeToFit",
-                height=800,
-                # width=720,
-                theme='fresh',     # valid themes: 'streamlit', 'light', 'dark', 'blue', 'fresh', 'material'
-                # defaultWidth=25,
-                fit_columns_on_grid_load=True, 
-                enable_enterprise_modules=True,
-                allow_unsafe_jscode=True
-            )
-
-        st.write ('\n')
-        st.write ('\n')
-        st.write ('\n')
-
-
 
 
 
