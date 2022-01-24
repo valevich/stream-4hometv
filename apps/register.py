@@ -244,11 +244,11 @@ def app():
                         else:
                             xUsername = lname.lower() + '1'
                             xName = (fname + ' ' + lname).title()
-                            values = [[xName, xUsername, psw1, email, None, None, phone, None, None, None, None, None, None]]
+                            values = [[xName, None, xUsername, psw1, email, None, None, phone, None, None, None, None, None, None]]
                             wks.append_table(values, start='A2', end=None, dimension='ROWS', overwrite=True)  # Added
                             st.write ('Success! You have been registered!')
                             st.write ('Please follow guide in our Help section to install IPTV app on your device!')
-                            st.write ('After IPTV app is unstalled login to your account and add your device MAC address!')
+                            st.write ('After IPTV app is installed, login to your account and add your device MAC address!')
                             st.write ('Once your MAC address is registered your account will be activated!')
         
 
