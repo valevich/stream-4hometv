@@ -156,29 +156,109 @@ def app():
 
 
 
-    #----------------------------------------------------------------------------------#
-    #                                 Install_IPTV_App                                 #
-    #----------------------------------------------------------------------------------#
-    def Install_IPTV_App():
 
-        display_header()
+    #----------------------------------------------------------------------------------#
+    #                                 Install_IPTV_Apps                                #
+    #----------------------------------------------------------------------------------#
+    def Install_IPTV_Apps():
 
-        #---------------  Install_IPTV ROW 1  -------------------
-        col1, col2, col3 = st.columns([1,2,1])
+        #----------------------        Install_Downloader_App        ----------------------#
+        col1, col2, col3 = st.columns([2,5,.5])
+        with col1:
+            img = Image.open("images/downloader1.png")
+            st.image(img,width=200)
         with col2:
-            img = Image.open("images/watch_smartiptv.png")
-            st.image(img,width=470)
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 20px; font-size: 22px;"> \
+                <b>1. Install Downloader App on Firestick</b></p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write ('The Downloader app is officially available on Amazon Store. You don’t have to side-load it onto your device. Here is how you can install the app:')
+            result1 = st.button ("Read",1)
         st.write ('\n')
 
-        #---------------  Install_IPTV ROW 2  -------------------
-        st.write('This is a step-by-step guide on how to install SmartIPTV on FireStick, Fire TV, and Fire TV Cube. \
-            SmartIPTV is available on FireStick devices and works as an IPTV management service. \
-            It also offers a 7 days free trial so that you can explore it well before paying for the subscription. \
-            It costs about 5.49 EUR or $6.67 per each device.')
-        st.write('Follow these steps to install Smart IPTV:')
+        #----------------------        Enable_ThirdParty_Apps        ----------------------#
+        col1, col2, col3 = st.columns([2,5,.5])
+        with col1:
+            img = Image.open("images/firestick1.jpeg")
+            st.image(img,width=200)
+        with col2:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 20px; font-size: 22px;"> \
+                <b>2. Enable Third-Party Apps on Firestick</b></p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write ('For any apps not available on the Amazon App Store, you have to make a few adjustments to your device. Here’s how to enable third-party apps in Settings:')
+            result2 = st.button ("Read",2)
+        st.write ('\n')
         st.write ('\n')
 
-        #---------------  Install_IPTV Step 1  -------------------
+        #----------------------        Install_IPTV_Player        ----------------------#
+        col1, col2, col3 = st.columns([2,5,.5])
+        with col1:
+            img = Image.open("images/IPTV_Players.jpeg")
+            st.image(img,width=200)
+        with col2:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 20px; font-size: 22px;"> \
+                <b>3. Install IPTV Player on Firestick</b></p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write ("IPTV Player is required to play IPTV channels from your current subscription. You will find the installation and setup procedure in these guides below.  \
+                       Choose one of our recommended IPTV players below and click 'Read' to see it's installation guide.")
+ 
+        st.write ('\n')
+
+
+        #---------------  IPTV Players  -------------------
+        col1, col2, col3 = st.columns([1,1,1])
+        with col1:
+            img = Image.open("images/Tivimate.png")
+            st.image(img,width=158)
+            st.write('Price: Free or $24.99 for up to 5 devices')
+            result3 = st.button ("Read",3)
+        with col2:
+            img = Image.open("images/SmartIPTV_Logo.png")
+            st.image(img,width=150)
+            st.write('Price: $6.00 per device')
+            result4 = st.button ("Read",4)
+        with col3:
+            img = Image.open("images/Televizo.png")
+            st.image(img,width=150)
+            st.write('Price: Free')
+            result5 = st.button ("Read",5)
+        st.write ('\n')
+
+
+        st.write ('\n')
+        st.markdown("---")
+        st.write ('\n')
+
+
+
+        if result1:
+            Install_Downloader_App()
+        elif result2:
+            Enable_ThirdParty_Apps()
+        elif result3:
+            Install_Tivimate()
+        elif result4:
+            Install_SmartIPTV()
+        elif result5:
+            Install_Televizo()
+
+
+
+
+
+
+    #----------------------------------------------------------------------------------#
+    #                              Install_Downloader_App                              #
+    #----------------------------------------------------------------------------------#
+    def Install_Downloader_App():
+
+        st. title("Install Downloader App on Firestick")
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  Step 1  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
@@ -187,13 +267,13 @@ def app():
                 Step 1</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('From FireStick Home click on Settings')
+            st.write('Go to the home screen of Fire TV and then Use your remote to navigate to Find > Search on the menu bar in the middle of the screen.')
         with col3:
-            img = Image.open("images/Step1-install.jpeg")
+            img = Image.open("images/Downloader_Step1.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Step 2  -------------------
+        #---------------  Step 2  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
@@ -202,9 +282,10 @@ def app():
                 Step 2</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Go to “My Fire TV”')
+            st.write('Now type in ‘Downloader’ (without the quotes of course) using the onscreen keypad (use the remote to navigate to the letters. \
+                      \nYou should see the app suggestions on the list that show up as you begin typing. When you see ‘Downloader’ on the list, select and open it.')
         with col3:
-            img = Image.open("images/Step2-install.jpeg")
+            img = Image.open("images/Downloader_Step2.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
@@ -217,9 +298,9 @@ def app():
                 Step 3</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Access to the “Developer Options”')
+            st.write('You should now see ‘Downloader’ appear under the ‘APPS & GAMES’ section. Go ahead and click it.')
         with col3:
-            img = Image.open("images/Step3-install.jpeg")
+            img = Image.open("images/Downloader_Step3.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
@@ -232,9 +313,9 @@ def app():
                 Step 4</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Click on “Apps from unknown sources”')
+            st.write("Now click the ‘Get’ or ‘Download‘ button to download and install the app. You should have the app in no more than a couple of minutes.")
         with col3:
-            img = Image.open("images/Step4-install.jpeg")
+            img = Image.open("images/Downloader_Step4.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
@@ -247,10 +328,14 @@ def app():
                 Step 5</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('You will be prompted towards a message, Click “Turn ON”')
+            st.write("Once the app is installed, click Open. You can always find it on the home screen among the recently installed apps or in Apps.\
+                      When you open the app for the first time, you may see the ‘Update Notes for Downloader’ pop-up. Go ahead and read it if you want to, or simply click ‘OK’ to proceed.")
         with col3:
-            img = Image.open("images/Step5-install.jpeg")
+            img = Image.open("images/Downloader_Step5.png")
             st.image(img,width=500)
+        st.write ('\n')
+
+        st.write ("Now, before we get started with Downloader, there is one little tweak to the app I would suggest you make—Enable JavaScript.  If this option remains unchecked, some of the websites will not download properly in Downloader.")
         st.write ('\n')
 
         #---------------  Install_IPTV Step 6  -------------------
@@ -262,9 +347,12 @@ def app():
                 Step 6</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Return to Home > then Click on the Search icon at the top > then search for “Downloader”')
+            st.write("Here is how you can enable JavaScript: \
+                    \n   1. Open Downloader \
+                    \n   2. On the left sidebar you should see the option ‘Settings’; select it \
+                    \n   3. Check the box next to Enable JavaScript in Settings.")
         with col3:
-            img = Image.open("images/Step6-install.jpeg")
+            img = Image.open("images/Downloader_Step6.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
@@ -277,13 +365,360 @@ def app():
                 Step 7</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Select the Downloader app from the list')
+            st.write("Click ‘Yes’ when you see the warning message. Again, don’t worry about the warning. \
+                      Keep this option checked, most browsers keep JavaScript enabled by default")
         with col3:
-            img = Image.open("images/Step7-install.png")
+            img = Image.open("images/Downloader_Step7.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Step 8  -------------------
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+        st.write ('Now you need to Enable Third-Party Apps on Firestick. Follow instructions in the next step.')
+
+
+
+
+
+    #----------------------------------------------------------------------------------#
+    #                            Enable_ThirdParty_Apps()                              #
+    #----------------------------------------------------------------------------------#
+    def Enable_ThirdParty_Apps():
+
+        st. title("Enable Third-Party Apps on Firestick")
+        st.write ('\n')
+        
+        #---------------  ROW 1  -------------------
+        st.write('By default, FireStick doesn’t allow users to install third-party apps for security reasons. \
+            Therefore, you won’t be able to sideload applications using Downloader until you make a few tweaks. \
+            To install APKs via Downloader hassle-free, you’ll need to allow FireStick to install apps from unknown, or third-party, sources.')
+        st.write('Follow these steps to install Smart IPTV:')
+        st.write ('\n')
+
+        #---------------  Step 1  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 1</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Launch your FireStick home screen and navigate to the settings icon.')
+        with col3:
+            img = Image.open("images/ThirdParty_Step1.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 2  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 2</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Scroll down to the My Fire TV banner and click on it.')
+        with col3:
+            img = Image.open("images/ThirdParty_Step2.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 3  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 3</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Click on Developer Options.')
+        with col3:
+            img = Image.open("images/ThirdParty_Step3.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 4  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 4</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Select Install unknown apps.')
+        with col3:
+            img = Image.open("images/ThirdParty_Step4.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 5  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 5</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Navigate to Downloader and select it to turn it ON.')
+        with col3:
+            img = Image.open("images/ThirdParty_Step5.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+        st.write ('Press Home button and proceed to next step to Download IPTV app to Firestick.')
+
+
+
+
+
+    #----------------------------------------------------------------------------------#
+    #                                  Install_Tivimate                                #
+    #----------------------------------------------------------------------------------#
+    def Install_Tivimate():
+
+        st. title("Install Tivimate Player")
+        st.write ("TiviMate is an IPTV player that allows you to integrate third-party IPTV services with M3U links. \
+                   So, first, we will download TiviMate on FireStick, and then we’ll use an IPTV service to enable the player’s capabilities. \
+                   TiviMate offers a premium version as well. If you decide you’re going to use TiviMate regularly, I advise shelling out a few bucks for the advanced features.")
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  Step 1  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 1</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('From Home menu, select "Downloader" to open app. It can also be accessed from your Apps menu. ')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step1.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 2  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 2</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('On Downloader Home menu, insert this URL "https://is.gd/tivimate3" and click "Go"')
+        with col3:
+            img = Image.open("images/Tivimate_Step2.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 3  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 3</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Wait until the Tivimate app is downloaded')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step3.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 4  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 4</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Downloader application will prompt to install Tivimate. Click “Install”')
+        with col3:
+            img = Image.open("images/Tivimate_Step4.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 5  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 5</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Once installed click “Done”')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step5.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 6  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 6</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Now press “Delete” to delete installation temp file.')
+        with col3:
+            img = Image.open("images/Tivimate_Step6.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 7  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 7</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('The “Delete” message will prompt again. So press "Delete" again')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step7.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
+        row = '<p style="text-align: center;font-family:sans-serif; color:Red; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 28px;"> \
+            <b>How to Access and Use Tivimate on FireStick</b></p>'
+        st.markdown(row, unsafe_allow_html=True)
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('Here are the steps you need to follow in order to access and use Tivimate on FireStick:')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  Tivimate Access 1  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 1</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('1. You may go to the Settings >> Applications >> Manage Installed Applications > Smart IPTV > Launch application OR \
+                      \n2. You may hold down the Home button on the remote for a few seconds. A popup is displayed. Choose Apps OR \
+                      \n3. Go ahead and click the 3-dot button on the FireStick home screen')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/SmartIPTV_Access1.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Access 2  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 2</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Now, scroll, and on the bottom, you will find Tivimate.')
+        with col3:
+            img = Image.open("images/Tivimate_Access2.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Access 3  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 3</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('You may also move this app on the home screen for quick and easy access. Simply press the menu button on the remote and click Move on the popup window on the TV. Now, place Tivimate in the first or second row.')
+        with col3:
+            img = Image.open("images/Tivimate_Access3.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Access 4  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 4</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Now you can comfortably access TiviMate Player from your FireStick home screen. There’s no need to go through a menu each time.')
+        with col3:
+            img = Image.open("images/Tivimate_Access4.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Access 5  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 5</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Open the TiviMate app.')
+        with col3:
+            img = Image.open("images/Tivimate_Access5.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Access 6  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 6</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Select Add playlist.')
+        with col3:
+            img = Image.open("images/Tivimate_Access6.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Access 7  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 7</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('TiviMate will ask you to add a playlist using an M3U link, Xtream code, or Stalker Portal. \nSelect the M3U playlist. \
+                      When you subscribe to an IPTV service, you will receive an email with relevant login information and an M3U link.')
+        with col3:
+            img = Image.open("images/Tivimate_Access7.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Access 8  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
@@ -292,13 +727,13 @@ def app():
                 Step 8</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Click on "Get" or "Download"')
+            st.write('TiviMate will ask you to type in your M3U link. Enter your M3U link and press Next.')
         with col3:
-            img = Image.open("images/Step8-install.png")
+            img = Image.open("images/Tivimate_Access8.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Step 9  -------------------
+        #---------------  Tivimate Access 9  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
@@ -307,13 +742,13 @@ def app():
                 Step 9</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Once downloaded, click "Open"')
+            st.write('TiviMate will load the IPTV service and offer a peek at the number of channels and movies available in the IPTV package.')
         with col3:
-            img = Image.open("images/Step9-install.png")
+            img = Image.open("images/Tivimate_Access9.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Step 10  -------------------
+        #---------------  Tivimate Access 10  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
@@ -322,13 +757,13 @@ def app():
                 Step 10</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('On Downloader Home menu, insert this URL "apk.siptv.app" and click "Go"')
+            st.write('Add a Playlist name.')
         with col3:
-            img = Image.open("images/Step10-install.jpeg")
+            img = Image.open("images/Tivimate_Access10.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Step 11  -------------------
+        #---------------  Tivimate Access 11  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
@@ -337,13 +772,13 @@ def app():
                 Step 11</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Wait until the Smart IPTV app is downloaded')
+            st.write('If the playlist is finished processing, select Done.')
         with col3:
-            img = Image.open("images/Step11-install.jpeg")
+            img = Image.open("images/Tivimate_Access11.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Step 12  -------------------
+        #---------------  Tivimate Access 12  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
@@ -352,86 +787,376 @@ def app():
                 Step 12</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Downloader application will prompt to install Smart IPTV. Click “Install”')
+            st.write('A minute or two later, you will see the IPTV service’s content appearing in the TiviMate app. \
+                      Most IPTV services come with a dedicated EPG (electronic program guide), as shown here.')
         with col3:
-            img = Image.open("images/Step12-install.jpeg")
+            img = Image.open("images/Tivimate_Access12.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+        st.write ('\n')
+
+        st.title ('All Done!')
+        st.write ('The major features of TiviMate are behind a paywall. You need to pay for the premium version to enjoy TiviMate at its greatest potential. \
+                   When you try to access any premium feature without a premium account, TiviMate will ask you to upgrade to premium. For example, when you try \
+                   to add a channel to your list of favorites, TiviMate will prompt you to upgrade the app. \
+                   If you wish to continue with the free version, you can hit Cancel and keep using the free TiviMate app on FireStick.')
+
+        st.write ('\n')
+        st.write ('To purchase the premium version, you need to use the TiviMate Companion app from the Google Play Store. Here’s how to do it.')
+        st.write ('\n')
+        st.write ('\n')
+        st.subheader ("Install 'TiviMate Companion' App From Google Play Store")
+
+        st.write ('\n')
+        st.write ('To purchase the premium version, you need to use the TiviMate Companion app from the Google Play Store. Here’s how to do it.')
+
+        st.write ('\n')
+        st.write ('Follow the steps below to purchase a TiviMate Premium subscription using the TiviMate Companion app.')
+
+        st.write ('\n')
+        st.write ('1. Open the Play Store on your Android device. \
+                   \n2. Tap on the search bar at the top and search for TiviMate Companion. \
+                   \n3. Download and install the TiviMate Companion app on your device. \
+                   \n4. Open the app. It will ask you to create an account. Click the Account button. \
+                   \n5. Click Sign up and follow the steps to create an account. \
+                   \n6. Sign in using your account credentials. You may then pay for a one-year subscription using a credit or debit card.')
+
+        st.write ('\n')
+        st.write ('\n')
+        st.subheader ("Unlock TiviMate Premium on FireStick")
+        st.write ('Now that you have purchased TiviMate Premium using an Android device, it’s time to activate the premium subscription on your \
+                   FireStick for a flawless IPTV experience. Go through the steps below.')
+        st.write ('\n')
+
+
+        #---------------  Tivimate Premium 1  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 1</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Open the TiviMate app on your FireStick.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Premium1.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Step 13  -------------------
+        #---------------  Tivimate Premium 2  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 2</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('As soon as you try to use any of the premium features, TiviMate will ask you to unlock the feature by subscribing. \
+                      Glance through all the Premium features and hit the Next button.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Premium2.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Premium 3  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 3</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('The following screen will ask you to buy TiviMate Premium using the Android TiviMate Companion app. We have already done that. Click on the Account button.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Premium3.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Premium 4  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 4</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Add your TiviMate account Email and Password and click on Log in.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Premium4.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        st.write ('That’s it. You have successfully activated TiviMate Premium on FireStick. \
+                   You can now enjoy all the features of the TiviMate IPTV player with your choice of IPTV provider.')
+
+
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        st.subheader ("TiviMate Details and Features")
+        st.write ('TiviMate is an IPTV player that allows you to have nonstop streaming. The app is compatible with many devices including FireStick. \
+                   The interface of TiviMate is unique and specially designed for the big screens to give you the best streaming experience. \
+                   It is user-friendly and works great on various devices including FireStick. Navigation of the app is easy and practical \
+                   with all the necessary buttons and options.')
+        st.write ('\n')
+        st.write ('\n')
+
+
+        #---------------  Tivimate Features1   -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20px;"> \
+                Record Content</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('TiviMate IPTV Player allows you to record content to view it later. If you don’t have time and want to watch something later, \
+                      you can hit the Record button in the video player and view it later from the Recordings tab on the home screen of the TiviMate app.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Features1.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Features2   -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20px;"> \
+                Enable Subtitles</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('This one is quite useful when you’re watching content that’s not in your native language. From the player menu, \
+                      simply hit the CC (closed captions) button and enable subtitles from the sliding menu.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Features2.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Features3   -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20px;"> \
+                Add to Favorites</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('There are multiple ways to add a channel to your favorites in the TiviMate Player app. \
+                      Our go-to method is using the Add to Favorites button within the video player.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Features3.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Features4   -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20px;"> \
+                Multi-view Mode</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('If you want to view multiple channels at once, TiviMate has an option for that as well. From the player menu, \
+                you can select Multi-view and select another channel to view two channels at the same time.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Features4.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Features5   -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20px;"> \
+                Sleep Timer</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('This is a must-have for any IPTV app. A sleep timer turns off the app after a set amount of time. \
+                I’m glad to see the sleep timer built right into the player menu. Simply press the stopwatch icon on the video player screen and select the time from the right side menu.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Features5.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Features6   -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20px;"> \
+                Sleep Timer</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Users can automatically put the TiviMate app to sleep in anywhere from 15 minutes to 240 minutes. \
+                This feature is useful, for example, when children are watching TV before bed. You can put a half-hour timer and shut down the app.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Features6.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Features7   -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20px;"> \
+                Check Video Details</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('By default, the TiviMate Player offers details on video quality, number of frames per second (FPS), and sound quality.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Features7.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Tivimate Features8   -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20px;"> \
+                Change App Appearance</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Not a fan of the default look and theme of the TiviMate app? Go to Settings and you can easily change multiple aspects of the current \
+                      look, such as the TV guide, font size, background color, and even selection color.')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/Tivimate_Features8.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+        st.write ('\n')
+
+        st.write ('The list above is just the tip of the iceberg for the TiviMate app. Using the premium subscription, \
+                   you can unlock dozens of useful features for the app. For more details, check out the TiviMate overview section in the article.')
+
+
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
+
+
+
+
+
+
+    #----------------------------------------------------------------------------------#
+    #                                  Install_SmartIPTV                               #
+    #----------------------------------------------------------------------------------#
+    def Install_SmartIPTV():
+
+        st. title("Install SmartIPTV Player")
+        st.write ("Smart IPTV is a paid service. However, there are NO recurring charges. You just need to pay a one-time activation fee of 5.49 EUR or about 6.00 USD. \
+                   Use the MAC address in your Smart IPTV app to activate Smart IPTV paid service. \
+                   There is a free 7-day trial as well, which you can explore before buying the paid subscription. You may start the trial with the same MAC address.")
+        st.write ('\n')
+
+        #---------------  Step 1  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
             st.write ('\n')
             row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
-                Step 13</p>'
+                Step 1</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('From Home menu, select "Downloader" to open app. It can also be accessed from your Apps menu. ')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step1.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 2  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 2</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('On Downloader Home menu, insert this URL "apk.siptv.app" and click "Go"')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step2.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 3  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 3</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Wait until the Smart IPTV app is downloaded')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step3.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 4  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 4</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Downloader application will prompt to install Smart IPTV. Click “Install”')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step4.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 5  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 5</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
             st.write('Once installed click “Done”')
         with col3:
-            img = Image.open("images/Step13-install.jpeg")
+            img = Image.open("images/SmartIPTV_Step5.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Step 14  -------------------
+        #---------------  Step 6  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
             st.write ('\n')
             row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
-                Step 14</p>'
+                Step 6</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
             st.write('Now press “Delete” to delete installation temp file.')
         with col3:
-            img = Image.open("images/Step14-install.jpeg")
+            img = Image.open("images/SmartIPTV_Step6.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Step 15  -------------------
+        #---------------  Step 7  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
             st.write ('\n')
             row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
-                Step 15</p>'
+                Step 7</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
             st.write('The “Delete” message will prompt again. So press "Delete" again')
         with col3:
-            img = Image.open("images/Step15-install.jpeg")
+            img = Image.open("images/SmartIPTV_Step7.jpeg")
             st.image(img,width=500)
         st.write ('\n')
         st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
 
-        #---------------  Install_IPTV Step Done  -------------------
-        col1, col2, col3 = st.columns([2,1,3])
-        with col1:
-            st.write ('\n')
-            st.write ('\n')
-            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
-                Done</p>'
-            st.markdown(row, unsafe_allow_html=True)
-            st.write ('\n')
-            st.write('Now you have installed the Smart IPTV app on FireStick!')
-        with col3:
-            lottie_hello = load_lottieurl("https://assets8.lottiefiles.com/temp/lf20_MqU2rh.json")
-            st_lottie(
-                lottie_hello,
-                speed=1,
-                reverse=False,
-                loop=True,
-                quality="low", # medium ; high
-                renderer="svg", # canvas
-                height=150,
-                width=150,
-                key=None,
-            )
-        st.write ('\n')
-        st.write ('\n')
-        st.write ('\n')
-        st.write ('\n')
-        st.write ('\n')
 
         row = '<p style="text-align: center;font-family:sans-serif; color:Red; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 28px;"> \
             <b>How to Access and Use Smart IPTV on FireStick</b></p>'
@@ -443,22 +1168,23 @@ def app():
         st.write ('\n')
         st.write ('\n')
 
-        #---------------  Install_IPTV Access 1  -------------------
+        #---------------  SmartIPTV Access 1  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
-            st.write ('\n')
-            st.write ('\n')
             row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
                 Step 1</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Press on the Home button in your FireStick remote and select Apps')
+            st.write('1. You may go to the Settings >> Applications >> Manage Installed Applications > Smart IPTV > Launch application OR \
+                      \n2. You may hold down the Home button on the remote for a few seconds. A popup is displayed. Choose Apps OR \
+                      \n3. Go ahead and click the 3-dot button on the FireStick home screen')
+        st.write ('\n')
         with col3:
-            img = Image.open("images/Access-Step1.jpeg")
+            img = Image.open("images/SmartIPTV_Access1.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Access 2  -------------------
+        #---------------  SmartIPTV Access 2  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
@@ -467,13 +1193,13 @@ def app():
                 Step 2</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Select Smart IPTV app from the list')
+            st.write('Now, scroll, and on the bottom, you will find Smart IPTV. Click the app to run it.')
         with col3:
-            img = Image.open("images/Access-Step2.jpeg")
+            img = Image.open("images/SmartIPTV_Access2.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Access 3  -------------------
+        #---------------  SmartIPTV Access 3  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
@@ -482,13 +1208,13 @@ def app():
                 Step 3</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Open the app and you will see this screen the first time you open Smart IPTV (Note down the Mac Address)')
+            st.write('You may also move this app on the home screen for quick and easy access. Simply press the menu button on the remote and click Move on the popup window on the TV. Now, place Smart IPTV in the first or second row.')
         with col3:
-            img = Image.open("images/Access-Step3.jpeg")
+            img = Image.open("images/SmartIPTV_Access3.jpeg")
             st.image(img,width=500)
         st.write ('\n')
 
-        #---------------  Install_IPTV Access 4  -------------------
+        #---------------  SmartIPTV Access 4  -------------------
         col1, col2, col3 = st.columns([2,1,3])
         with col1:
             st.write ('\n')
@@ -497,15 +1223,31 @@ def app():
                 Step 4</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write('Now please Register, then Click on Account and Login. Then you can add your device type and MAC Address.')
+            st.write('Open the app and you will see this screen the first time you open Smart IPTV (Note down the Mac Address)')
         with col3:
-            img = Image.open("images/Access-Step4.png")
+            img = Image.open("images/SmartIPTV_Access4.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  SmartIPTV Access 5  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 5</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Now please Register, then Click on Account and Login. Then you can add your device type and MAC Address. \
+                      \nor send us an email with your Name and MAC Addess to 4hometv10@gmail.com')
+        with col3:
+            img = Image.open("images/SmartIPTV_Access5.png")
             st.image(img,width=500)
         st.write ('\n')
         st.write ('\n')
         st.write ('\n')
 
-        #---------------  Install_IPTV Access 5  -------------------
+        #---------------  SmartIPTV Access 6  -------------------
         col1, col2, col3 = st.columns([1,3,1])
         with col2:
             # row = '<p style="text-align: left;color:Blue;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
@@ -517,7 +1259,7 @@ def app():
         st.write ('\n')
         st.write ('\n')
 
-        #---------------  Install_IPTV Access 6  -------------------
+        #---------------  SmartIPTV Access 7  -------------------
         col1, col2, col3, col4 = st.columns([1,4,.3,3])
         with col2:
             row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 16px;"> \
@@ -553,11 +1295,391 @@ def app():
             # st.markdown(row, unsafe_allow_html=True)
             # st.write ('\n')
             st.write('Visit https://siptv.app/activation/ to activate Smart IPTV and enter your Mac address.')
-            st.write('Now you need to enter your payment information. Smart IPTV costs 5.49 EUR or $6.67.')
+            st.write('Now you need to enter your payment information. Smart IPTV costs 5.49 EUR or about $6.00.')
         with col3:
             img = Image.open("images/SmartIPTV.png")
             st.image(img,width=500)
         st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
+        #---------------  Install_IPTV Step Done  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Done</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Now you have installed the Smart IPTV app on FireStick!')
+        with col3:
+            lottie_hello = load_lottieurl("https://assets8.lottiefiles.com/temp/lf20_MqU2rh.json")
+            st_lottie(
+                lottie_hello,
+                speed=1,
+                reverse=False,
+                loop=True,
+                quality="low", # medium ; high
+                renderer="svg", # canvas
+                height=150,
+                width=150,
+                key=None,
+            )
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
+
+
+    #----------------------------------------------------------------------------------#
+    #                                  Install_Televizo                               #
+    #----------------------------------------------------------------------------------#
+    def Install_Televizo():
+
+        st. title("Install Televizo Player")
+        st.write ("Televizo IPTV is an IPTV player with which you can stream IPTV videos either with the M3U URL or Xtream Codes. It includes lots of \
+                   features like live broadcasts and adding unlimited playlists. Moreover, it supports different streams like HLS, UDP, and RTMP. \
+                   Other salient features include parental controls, sorting, searching, adding favorites, and subtitles.")
+        st.write ('\n')
+
+        #---------------  Step 1  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 1</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('From Home menu, select "Downloader" to open app. It can also be accessed from your Apps menu. ')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step1.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 2  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 2</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('On Downloader Home menu, insert this URL "https://is.gd/televizo3" and click "Go"')
+        with col3:
+            img = Image.open("images/Televizo_Step2.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 3  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 3</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Wait until the Televizo app is downloaded')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step3.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 4  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 4</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Downloader application will prompt to install Televizo. Click “Install”')
+        with col3:
+            img = Image.open("images/SmartIPTV_Step4.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 5  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 5</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Once installed click “Done”')
+        with col3:
+            img = Image.open("images/Televizo_Step5.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 6  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 6</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Now press “Delete” to delete installation temp file.')
+        with col3:
+            img = Image.open("images/Televizo_Step6.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Step 7  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 7</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('The “Delete” message will prompt again. So press "Delete" again')
+        with col3:
+            img = Image.open("images/Televizo_Step7.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
+        row = '<p style="text-align: center;font-family:sans-serif; color:Red; margin-top: 20; margin-bottom: 5; line-height: 30px; font-size: 28px;"> \
+            <b>How to Access and Use Televizo on FireStick</b></p>'
+        st.markdown(row, unsafe_allow_html=True)
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('Here are the steps you need to follow in order to access and use Televizo on FireStick:')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+        #---------------  Televizo Access 1  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 1</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('1. You may go to the Settings >> Applications >> Manage Installed Applications > Televizo > Launch application OR \
+                      \n2. You may hold down the Home button on the remote for a few seconds. A popup is displayed. Choose Apps OR \
+                      \n3. Go ahead and click the 3-dot button on the FireStick home screen')
+        st.write ('\n')
+        with col3:
+            img = Image.open("images/SmartIPTV_Access1.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 2  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 2</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Now, scroll, and on the bottom, you will find Televizo. Click the app to run it.')
+        with col3:
+            img = Image.open("images/Televizo_Access2.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 3  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 3</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('You may also move this app on the home screen for quick and easy access. Simply press the menu button on the remote and click Move on the popup window on the TV. Now, place Televizo in the first or second row.')
+        with col3:
+            img = Image.open("images/Televizo_Access3.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 4  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 4</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Once you open Televizo app, select Create Playlist.')
+        with col3:
+            img = Image.open("images/Televizo_Access4.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 5  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 5</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Give any name to your playlist and below type in M3U link which you received from your provider.')
+        with col3:
+            img = Image.open("images/Televizo_Access5.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 6  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 6</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("After Playlist is loaded, you can select all channels or you can select a group to see just this group's channels")
+        with col3:
+            img = Image.open("images/Televizo_Access6.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 7  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 7</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("You can also add any channel to your Favorites by long press OK button and select Add to Favorites.")
+        with col3:
+            img = Image.open("images/Televizo_Access7.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 8  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 8</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("Also, you can block any group or channel and remove it from the group.")
+        with col3:
+            img = Image.open("images/Televizo_Access8.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 9  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 9</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("Channels can also be sorted as well as filter channels and change appearance as list, grid or tiles.")
+        with col3:
+            img = Image.open("images/Televizo_Access9.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 10  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 10</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("You may watch any channel in compact mode or as full screen.")
+        with col3:
+            img = Image.open("images/Televizo_Access10.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 11  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 11</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("To access TV Guide, you can long press Down button while watching your channel to it's schedule.")
+        with col3:
+            img = Image.open("images/Televizo_Access11.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 12  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 12</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("You may customize the look and feel of the app in Additional Settings.")
+        with col3:
+            img = Image.open("images/Televizo_Access12.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
+        #---------------  Install_IPTV Step Done  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Done</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write('Enjoy your Televizo app on FireStick!')
+        with col3:
+            lottie_hello = load_lottieurl("https://assets8.lottiefiles.com/temp/lf20_MqU2rh.json")
+            st_lottie(
+                lottie_hello,
+                speed=1,
+                reverse=False,
+                loop=True,
+                quality="low", # medium ; high
+                renderer="svg", # canvas
+                height=150,
+                width=150,
+                key=None,
+            )
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+        st.write ('\n')
+
+
 
 
 
@@ -1204,33 +2326,29 @@ def app():
         return r.json()
 
 
+
+
     #----------------------------------------------------------------------------------#
     #                              MAIN - BEGIN SCRIPT                                 #
     #----------------------------------------------------------------------------------#
-    # if "first" not in st.session_state:
-    #     st.session_state.first = 'Y'
-    
-    # if st.session_state.first == 'Y':
-    #     st.session_state.first = 'N'
-    #     display_header()
 
-    xSelection = st.sidebar.radio("Select Below:", ('How to Sign-up or Renew','Install SmartIPTV App', 
-            'Remote Control', 'Available Channels', 'Premier League Channels', 'Frequently Asked Questions', 
-            'Add Storage to Fire TV')) 
+    xSelection = st.sidebar.radio("Select Below:", ('How to Sign-up or Renew',  
+            'Available Channels', 'Premier League Channels','Setup & Install IPTV Apps', 
+            'Remote Control SmartIPTV', 'Frequently Asked Questions', 'Add Storage to Fire TV')) 
 
     if xSelection == 'How to Sign-up or Renew':
         Signup ()
-    elif xSelection == 'Install SmartIPTV App': 
-        Install_IPTV_App ()
-    elif xSelection == 'Remote Control': 
-        Remote_Control ()
     elif xSelection == 'Available Channels': 
         Available_Channels ()
+    elif xSelection == 'Premier League Channels': 
+        Premier_League_Channels ()
+    elif xSelection == 'Setup & Install IPTV Apps': 
+        Install_IPTV_Apps ()
+    elif xSelection == 'Remote Control SmartIPTV': 
+        Remote_Control ()
     elif xSelection == 'Frequently Asked Questions': 
         Frequently_Asked_Questions ()
     elif xSelection == 'Add Storage to Fire TV': 
         Add_Storage_FireTV ()
-    elif xSelection == 'Premier League Channels': 
-        Premier_League_Channels ()
 
 
