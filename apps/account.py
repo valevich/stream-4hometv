@@ -159,7 +159,9 @@ def app():
         sheet = gc.open('4HomeTV')
         wks = sheet.worksheet_by_title('Users')
         for idx, row in enumerate(wks):
-            if (wks[idx+1][3]) == email and (wks[idx+1][2]) == psw:
+            # print ('email/psw: ' + email + ' - ' + psw)
+            # print ('gsheets  : ' + wks[idx+1][4] + ' - ' + wks[idx+1][3])
+            if (wks[idx+1][4]) == email and (wks[idx+1][3]) == psw:
                 xFound = 'Y'
                 xRecord = wks[idx+1]
                 st.session_state.row = idx+1
@@ -214,6 +216,7 @@ def app():
                 email = st.text_input(label='Email Address')
                 psw = st.text_input("Enter a password", type="password")
                 submitted1 = st.form_submit_button(label = 'Signin')
+
                 if submitted1:
                     xSubmitted = 'Y'
                     #---------------  Validate Email Address  -------------------
@@ -228,6 +231,7 @@ def app():
                         xError = '3'
                     elif len(psw) < 8:
                         xError = '4'
+
                     if xError == 'N':
                         with st.spinner('Logging in...Please Wait...'):
                             xRecord, xFound = load_gsheet(email, psw)
@@ -260,8 +264,8 @@ def app():
 
             info_names = ["Name: ", "Username: ", "Phone: ", "Email: ", \
                         "Status: ", "Activation Date: ", "Expiration Date: "]
-            info_list = [xRec[0], xRec[1], xRec[6], xRec[3], \
-                        xRec[7],  xRec[8],  xRec[9]]
+            info_list = [xRec[0], xRec[2], xRec[7], xRec[4], \
+                        xRec[8],  xRec[9],  xRec[10]]
             for name,infoValue in zip(info_names, info_list):
                 row = \
                 f"""<div> 
@@ -280,11 +284,11 @@ def app():
             #---------------  Device 1  -------------------
             xType = ''
             xMac = ''
-            if len(xRec[11]) > 0:
-                xType = xRec[11]
-                xDevices = 1
             if len(xRec[12]) > 0:
-                xMac = xRec[12]
+                xType = xRec[12]
+                xDevices = 1
+            if len(xRec[13]) > 0:
+                xMac = xRec[13]
                 xDevices = 1
                 row = \
                 f"""<div> 
@@ -296,11 +300,11 @@ def app():
             #---------------  Device 2  -------------------
             xType = ''
             xMac = ''
-            if len(xRec[13]) > 0:
-                xType = xRec[13]
-                xDevices = 2
             if len(xRec[14]) > 0:
-                xMac = xRec[14]
+                xType = xRec[14]
+                xDevices = 2
+            if len(xRec[15]) > 0:
+                xMac = xRec[15]
                 xDevices = 2
                 row = \
                 f"""<div> 
@@ -312,11 +316,11 @@ def app():
             #---------------  Device 3  -------------------
             xType = ''
             xMac = ''
-            if len(xRec[15]) > 0:
-                xType = xRec[15]
-                xDevices = 3
             if len(xRec[16]) > 0:
-                xMac = xRec[16]
+                xType = xRec[16]
+                xDevices = 3
+            if len(xRec[17]) > 0:
+                xMac = xRec[17]
                 xDevices = 3
                 row = \
                 f"""<div> 
@@ -328,11 +332,11 @@ def app():
             #---------------  Device 4  -------------------
             xType = ''
             xMac = ''
-            if len(xRec[17]) > 0:
-                xType = xRec[17]
-                xDevices = 4
             if len(xRec[18]) > 0:
-                xMac = xRec[18]
+                xType = xRec[18]
+                xDevices = 4
+            if len(xRec[19]) > 0:
+                xMac = xRec[19]
                 xDevices = 4
                 row = \
                 f"""<div> 

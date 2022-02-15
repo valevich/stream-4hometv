@@ -14,6 +14,9 @@ from PIL import Image
 
 def app():
 
+    #----------------------------------------------------------------------------------#
+    #                                   Display Header                                 #
+    #----------------------------------------------------------------------------------#
     def display_header():
 
         #---------------  HEADER ROW 1  -------------------
@@ -143,6 +146,9 @@ def app():
                 enable_enterprise_modules=True,
                 allow_unsafe_jscode=True
             )
+
+
+
 
 
 
