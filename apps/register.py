@@ -237,7 +237,7 @@ def app():
                         sheet = gc.open('4HomeTV')
                         wks = sheet.worksheet_by_title('Users')
                         for idx, row in enumerate(wks):
-                            if (wks[idx+1][3]) == email:
+                            if (wks[idx+1][4]) == email:
                                 xError = '10'
                         if xError == '10':
                             st.write ('Email Address already exists! Contact support for assistance!')
@@ -247,7 +247,7 @@ def app():
                             values = [[xName, None, xUsername, psw1, email, None, None, phone, None, None, None, None, None, None]]
                             wks.append_table(values, start='A2', end=None, dimension='ROWS', overwrite=True)  # Added
                             st.write ('Success! You have been registered!')
-                            st.write ('Please follow guide in our Help section to install IPTV app on your device!')
+                            st.write ('Please follow guide in our Support section to install IPTV app on your device!')
                             st.write ('After IPTV app is installed, login to your account and add your device MAC address!')
                             st.write ('Once your MAC address is registered your account will be activated!')
         

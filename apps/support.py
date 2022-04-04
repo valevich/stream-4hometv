@@ -83,12 +83,12 @@ def app():
             img = Image.open("images/Fire-TV.png")
             st.image(img,width=350)
         #---------------  ROW 2  -------------------
-        col1, col2, col3 = st.columns([1,3,1])
+        col1, col2, col3 = st.columns([.5,4,.5])
         with col2:
-            st.subheader ('Step 1:  Register and get 7 days Free Trial Subscription')
-            st.subheader ('Step 2:  Buy a Fire TV, Google TV or any Android TV device')
-            st.subheader ('Step 3:  Download and Install IPTV App')
-            st.subheader ('Step 4:  Activate Device MAC Address')
+            st.subheader ('Step 1:  Buy a Fire TV, Google TV or any Android TV device.')
+            st.subheader ('Step 2:  Register and get 7 days Free Trial Subscription.')
+            st.subheader ('Step 3:  Download and Install IPTV App.')
+            st.subheader ('Step 4:  Receive a Playlist link and add it to IPTV app.')
         #---------------  ROW 3  -------------------
         col1, col2, col3 = st.columns([1.2,2,.8])
         with col2:
@@ -102,11 +102,9 @@ def app():
         st.write ('\n')
 
 
-        st.title ('How to Renew your account')
-        # st.write ('You can use Paypal to send payment as indicated below...')
-        # st.write ('\n')
-        #---------------  PAYPAL  -------------------
+        st.title ('How to Activate or Renew your account')
 
+        #---------------  PAYPAL  -------------------
         col1, col2, col3 = st.columns([.5,2,3])
         with col2:
             st.write ('\n')
@@ -115,10 +113,14 @@ def app():
             st.write ('\n')
             st.write ('\n')
             st.write ('\n')
-            st.write ('\n')
-            st.write ('\n')
             row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20;"> \
                 Send payments to account: <b>@4hometv</b></p>'
+            st.markdown(row, unsafe_allow_html=True)
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20;"> \
+                or</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 20;"> \
+                <b>info@nellatech.com</b></p>'
             st.markdown(row, unsafe_allow_html=True)
         with col3:
             lottie_hello = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_9l396Q.json")
@@ -1566,7 +1568,7 @@ def app():
                 Step 7</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write("You can also add any channel to your Favorites by long press OK button and select Add to Favorites.")
+            st.write("Now you can add EPG (Program Guide) by clicking and entering the Settings page.")
         with col3:
             img = Image.open("images/Televizo_Access7.jpeg")
             st.image(img,width=500)
@@ -1581,7 +1583,7 @@ def app():
                 Step 8</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write("Also, you can block any group or channel and remove it from the group.")
+            st.write("Select an Option 'Program guide'.")
         with col3:
             img = Image.open("images/Televizo_Access8.jpeg")
             st.image(img,width=500)
@@ -1596,7 +1598,7 @@ def app():
                 Step 9</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write("Channels can also be sorted as well as filter channels and change appearance as list, grid or tiles.")
+            st.write("Click '+' to add a new EPG link.")
         with col3:
             img = Image.open("images/Televizo_Access9.jpeg")
             st.image(img,width=500)
@@ -1611,7 +1613,7 @@ def app():
                 Step 10</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write("You may watch any channel in compact mode or as full screen.")
+            st.write("Give any name to EPG Guide and enter the following link: http://epg.it999.ru/epg2.xml.gz.")
         with col3:
             img = Image.open("images/Televizo_Access10.jpeg")
             st.image(img,width=500)
@@ -1626,7 +1628,7 @@ def app():
                 Step 11</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write("To access TV Guide, you can long press Down button while watching your channel to it's schedule.")
+            st.write("You can also add any channel to your Favorites by long press OK button and select Add to Favorites.")
         with col3:
             img = Image.open("images/Televizo_Access11.jpeg")
             st.image(img,width=500)
@@ -1641,9 +1643,69 @@ def app():
                 Step 12</p>'
             st.markdown(row, unsafe_allow_html=True)
             st.write ('\n')
-            st.write("You may customize the look and feel of the app in Additional Settings.")
+            st.write("Also, you can block any group or channel and remove it from the group.")
         with col3:
             img = Image.open("images/Televizo_Access12.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 13  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 13</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("Channels can also be sorted as well as filter channels and change appearance as list, grid or tiles.")
+        with col3:
+            img = Image.open("images/Televizo_Access13.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 14  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 14</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("You may watch any channel in compact mode or as full screen.")
+        with col3:
+            img = Image.open("images/Televizo_Access14.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 15  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 15</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("To access TV Guide, you can long press Down button while watching your channel to it's schedule.")
+        with col3:
+            img = Image.open("images/Televizo_Access15.jpeg")
+            st.image(img,width=500)
+        st.write ('\n')
+
+        #---------------  Televizo Access 16  -------------------
+        col1, col2, col3 = st.columns([2,1,3])
+        with col1:
+            st.write ('\n')
+            st.write ('\n')
+            row = '<p style="text-align: left;font-family:sans-serif; color:Dark Grey; margin-top: 0; margin-bottom: 0; line-height: 24px; font-size: 30px;"> \
+                Step 16</p>'
+            st.markdown(row, unsafe_allow_html=True)
+            st.write ('\n')
+            st.write("You may customize the look and feel of the app in Additional Settings.")
+        with col3:
+            img = Image.open("images/Televizo_Access16.jpeg")
             st.image(img,width=500)
         st.write ('\n')
         st.write ('\n')
