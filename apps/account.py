@@ -312,16 +312,16 @@ def app():
             col1, col2, col3, col4 = st.columns([1,1,1,1])
             # with col1:
             devType1 = col1.selectbox('Device 1 Type', [xRec[12], 'Amazon FireTV', 'Google TV', 'Android TV', 'Samsung TV', 'LG TV', 'Other'], key=1)
-            devMac1 = col1.text_input('MAC Address', xRec[13], key=1)
+            devMac1 = col1.text_input('MAC Address', xRec[13], key=2)
             # with col2:
-            devType2 = col2.selectbox('Device 2 Type', [xRec[14], 'Amazon FireTV', 'Google TV', 'Android TV', 'Samsung TV', 'LG TV', 'Other'], key=2)
-            devMac2 = col2.text_input('MAC Address', xRec[15], key=2)
+            devType2 = col2.selectbox('Device 2 Type', [xRec[14], 'Amazon FireTV', 'Google TV', 'Android TV', 'Samsung TV', 'LG TV', 'Other'], key=3)
+            devMac2 = col2.text_input('MAC Address', xRec[15], key=4)
             # with col3:
-            devType3 = col3.selectbox('Device 3 Type', [xRec[16], 'Amazon FireTV', 'Google TV', 'Android TV', 'Samsung TV', 'LG TV', 'Other'], key=3)
-            devMac3 = col3.text_input('MAC Address', xRec[17], key=3)
+            devType3 = col3.selectbox('Device 3 Type', [xRec[16], 'Amazon FireTV', 'Google TV', 'Android TV', 'Samsung TV', 'LG TV', 'Other'], key=5)
+            devMac3 = col3.text_input('MAC Address', xRec[17], key=6)
             # with col4:
-            devType4 = col4.selectbox('Device 4 Type', [xRec[18], 'Amazon FireTV', 'Google TV', 'Android TV', 'Samsung TV', 'LG TV', 'Other'], key=4)
-            devMac4 = col4.text_input('MAC Address', xRec[19], key=4)
+            devType4 = col4.selectbox('Device 4 Type', [xRec[18], 'Amazon FireTV', 'Google TV', 'Android TV', 'Samsung TV', 'LG TV', 'Other'], key=7)
+            devMac4 = col4.text_input('MAC Address', xRec[19], key=8)
 
             submit_button1 = st.form_submit_button('Submit')
             st.session_state.counter += 1
